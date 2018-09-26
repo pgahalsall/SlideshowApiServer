@@ -1,0 +1,11 @@
+D:\dev\WebAPI\WebApi2\C#\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CoreCompileInputs.cache
+D:\dev\WebAPI\WebApi2\C#\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+D:\dev\WebAPI\WebApi2\C#\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+D:\dev\WebAPI\WebApi2\C#\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+D:\dev\WebAPI\WebApi2\C#\DataAccessLayer\bin\Debug\EntityFramework.dll
+D:\dev\WebAPI\WebApi2\C#\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\dev\WebAPI\WebApi2\C#\DataAccessLayer\bin\Debug\EntityFramework.xml
+D:\dev\WebAPI\WebApi2\C#\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\dev\WebAPI\WebApi2\C#\DataAccessLayer\obj\Debug\DataAccessLayer.csproj.CopyComplete
+D:\dev\WebAPI\WebApi2\C#\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+D:\dev\WebAPI\WebApi2\C#\DataAccessLayer\obj\Debug\DataAccessLayer.pdb

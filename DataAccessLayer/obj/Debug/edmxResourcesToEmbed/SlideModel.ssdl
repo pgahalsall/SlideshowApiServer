@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SlideServerDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Slide">
+    <Key>
+      <PropertyRef Name="slide_id" />
+    </Key>
+    <Property Name="slide_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="slide_name" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="slide_code" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="taken_date" Type="datetime" />
+    <Property Name="caption" Type="varchar" MaxLength="256" />
+    <Property Name="slide_height" Type="numeric" Precision="4" Scale="1" />
+    <Property Name="slide_width" Type="numeric" Precision="4" Scale="1" />
+    <Property Name="slide_margin" Type="numeric" Precision="4" Scale="1" />
+    <Property Name="image_uri" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="Slideshow">
+    <Key>
+      <PropertyRef Name="slideshow_id" />
+    </Key>
+    <Property Name="slideshow_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="slideshow_title" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="producer" Type="varchar" MaxLength="256" />
+    <Property Name="description" Type="varchar" MaxLength="256" />
+    <Property Name="last_updated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SlideshowSlide">
+    <Key>
+      <PropertyRef Name="slideshow_id" />
+      <PropertyRef Name="slide_id" />
+    </Key>
+    <Property Name="slideshow_id" Type="int" Nullable="false" />
+    <Property Name="slide_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SlideshowSoundtrack">
+    <Key>
+      <PropertyRef Name="slideshow_id" />
+      <PropertyRef Name="soundtrack_id" />
+    </Key>
+    <Property Name="slideshow_id" Type="int" Nullable="false" />
+    <Property Name="soundtrack_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Soundtrack">
+    <Key>
+      <PropertyRef Name="soundtrack_id" />
+    </Key>
+    <Property Name="soundtrack_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="song" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="musician" Type="varchar" MaxLength="256" />
+    <Property Name="file_path" Type="varchar" MaxLength="256" />
+    <Property Name="file_type" Type="varchar" MaxLength="8" />
+    <Property Name="release_date" Type="datetime" />
+    <Property Name="duration" Type="numeric" Precision="6" Scale="2" />
+    <Property Name="album_cover" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="last_name" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="256" />
+    <Property Name="phone" Type="varchar" MaxLength="256" />
+    <Property Name="hash" Type="varchar" MaxLength="256" />
+    <Property Name="salt" Type="varchar" MaxLength="256" />
+    <Property Name="last_updated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserSlideshow">
+    <Key>
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="slideshow_id" />
+    </Key>
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="slideshow_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="SlideServerDbModelStoreContainer">
+    <EntitySet Name="Slide" EntityType="Self.Slide" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Slideshow" EntityType="Self.Slideshow" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SlideshowSlide" EntityType="Self.SlideshowSlide" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SlideshowSoundtrack" EntityType="Self.SlideshowSoundtrack" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Soundtrack" EntityType="Self.Soundtrack" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserSlideshow" EntityType="Self.UserSlideshow" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

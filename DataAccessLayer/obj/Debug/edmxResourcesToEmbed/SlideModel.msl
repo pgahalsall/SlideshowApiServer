@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SlideServerDbModelStoreContainer" CdmEntityContainer="SlideServerDbEntities">
+    <EntitySetMapping Name="Slides">
+      <EntityTypeMapping TypeName="SlideServerDbModel.Slide">
+        <MappingFragment StoreEntitySet="Slide">
+          <ScalarProperty Name="slide_id" ColumnName="slide_id" />
+          <ScalarProperty Name="slide_name" ColumnName="slide_name" />
+          <ScalarProperty Name="slide_code" ColumnName="slide_code" />
+          <ScalarProperty Name="taken_date" ColumnName="taken_date" />
+          <ScalarProperty Name="caption" ColumnName="caption" />
+          <ScalarProperty Name="slide_height" ColumnName="slide_height" />
+          <ScalarProperty Name="slide_width" ColumnName="slide_width" />
+          <ScalarProperty Name="slide_margin" ColumnName="slide_margin" />
+          <ScalarProperty Name="image_uri" ColumnName="image_uri" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Slideshows">
+      <EntityTypeMapping TypeName="SlideServerDbModel.Slideshow">
+        <MappingFragment StoreEntitySet="Slideshow">
+          <ScalarProperty Name="slideshow_id" ColumnName="slideshow_id" />
+          <ScalarProperty Name="slideshow_title" ColumnName="slideshow_title" />
+          <ScalarProperty Name="producer" ColumnName="producer" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="last_updated" ColumnName="last_updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SlideshowSlides">
+      <EntityTypeMapping TypeName="SlideServerDbModel.SlideshowSlide">
+        <MappingFragment StoreEntitySet="SlideshowSlide">
+          <ScalarProperty Name="slideshow_id" ColumnName="slideshow_id" />
+          <ScalarProperty Name="slide_id" ColumnName="slide_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SlideshowSoundtracks">
+      <EntityTypeMapping TypeName="SlideServerDbModel.SlideshowSoundtrack">
+        <MappingFragment StoreEntitySet="SlideshowSoundtrack">
+          <ScalarProperty Name="slideshow_id" ColumnName="slideshow_id" />
+          <ScalarProperty Name="soundtrack_id" ColumnName="soundtrack_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Soundtracks">
+      <EntityTypeMapping TypeName="SlideServerDbModel.Soundtrack">
+        <MappingFragment StoreEntitySet="Soundtrack">
+          <ScalarProperty Name="soundtrack_id" ColumnName="soundtrack_id" />
+          <ScalarProperty Name="song" ColumnName="song" />
+          <ScalarProperty Name="musician" ColumnName="musician" />
+          <ScalarProperty Name="file_path" ColumnName="file_path" />
+          <ScalarProperty Name="file_type" ColumnName="file_type" />
+          <ScalarProperty Name="release_date" ColumnName="release_date" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="album_cover" ColumnName="album_cover" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="SlideServerDbModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="hash" ColumnName="hash" />
+          <ScalarProperty Name="salt" ColumnName="salt" />
+          <ScalarProperty Name="last_updated" ColumnName="last_updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSlideshows">
+      <EntityTypeMapping TypeName="SlideServerDbModel.UserSlideshow">
+        <MappingFragment StoreEntitySet="UserSlideshow">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="slideshow_id" ColumnName="slideshow_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

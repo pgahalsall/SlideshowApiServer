@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SlideServerDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Slide">
+          <Key>
+            <PropertyRef Name="slide_id" />
+          </Key>
+          <Property Name="slide_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="slide_name" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="slide_code" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="taken_date" Type="datetime" />
+          <Property Name="caption" Type="varchar" MaxLength="256" />
+          <Property Name="slide_height" Type="numeric" Precision="4" Scale="1" />
+          <Property Name="slide_width" Type="numeric" Precision="4" Scale="1" />
+          <Property Name="slide_margin" Type="numeric" Precision="4" Scale="1" />
+          <Property Name="image_uri" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Slideshow">
+          <Key>
+            <PropertyRef Name="slideshow_id" />
+          </Key>
+          <Property Name="slideshow_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="slideshow_title" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="producer" Type="varchar" MaxLength="256" />
+          <Property Name="description" Type="varchar" MaxLength="256" />
+          <Property Name="last_updated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SlideshowSlide">
+          <Key>
+            <PropertyRef Name="slideshow_id" />
+            <PropertyRef Name="slide_id" />
+          </Key>
+          <Property Name="slideshow_id" Type="int" Nullable="false" />
+          <Property Name="slide_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SlideshowSoundtrack">
+          <Key>
+            <PropertyRef Name="slideshow_id" />
+            <PropertyRef Name="soundtrack_id" />
+          </Key>
+          <Property Name="slideshow_id" Type="int" Nullable="false" />
+          <Property Name="soundtrack_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Soundtrack">
+          <Key>
+            <PropertyRef Name="soundtrack_id" />
+          </Key>
+          <Property Name="soundtrack_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="song" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="musician" Type="varchar" MaxLength="256" />
+          <Property Name="file_path" Type="varchar" MaxLength="256" />
+          <Property Name="file_type" Type="varchar" MaxLength="8" />
+          <Property Name="release_date" Type="datetime" />
+          <Property Name="duration" Type="numeric" Precision="6" Scale="2" />
+          <Property Name="album_cover" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="256" />
+          <Property Name="phone" Type="varchar" MaxLength="256" />
+          <Property Name="hash" Type="varchar" MaxLength="256" />
+          <Property Name="salt" Type="varchar" MaxLength="256" />
+          <Property Name="last_updated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserSlideshow">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="slideshow_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="slideshow_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="SlideServerDbModelStoreContainer">
+          <EntitySet Name="Slide" EntityType="Self.Slide" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slideshow" EntityType="Self.Slideshow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SlideshowSlide" EntityType="Self.SlideshowSlide" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SlideshowSoundtrack" EntityType="Self.SlideshowSoundtrack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Soundtrack" EntityType="Self.Soundtrack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSlideshow" EntityType="Self.UserSlideshow" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SlideServerDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Slide">
+          <Key>
+            <PropertyRef Name="slide_id" />
+          </Key>
+          <Property Name="slide_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="slide_name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="slide_code" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="taken_date" Type="DateTime" Precision="3" />
+          <Property Name="caption" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="slide_height" Type="Decimal" Precision="4" Scale="1" />
+          <Property Name="slide_width" Type="Decimal" Precision="4" Scale="1" />
+          <Property Name="slide_margin" Type="Decimal" Precision="4" Scale="1" />
+          <Property Name="image_uri" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Slideshow">
+          <Key>
+            <PropertyRef Name="slideshow_id" />
+          </Key>
+          <Property Name="slideshow_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="slideshow_title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="producer" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="last_updated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SlideshowSlide">
+          <Key>
+            <PropertyRef Name="slideshow_id" />
+            <PropertyRef Name="slide_id" />
+          </Key>
+          <Property Name="slideshow_id" Type="Int32" Nullable="false" />
+          <Property Name="slide_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SlideshowSoundtrack">
+          <Key>
+            <PropertyRef Name="slideshow_id" />
+            <PropertyRef Name="soundtrack_id" />
+          </Key>
+          <Property Name="slideshow_id" Type="Int32" Nullable="false" />
+          <Property Name="soundtrack_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Soundtrack">
+          <Key>
+            <PropertyRef Name="soundtrack_id" />
+          </Key>
+          <Property Name="soundtrack_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="song" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="musician" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="file_path" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="file_type" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="release_date" Type="DateTime" Precision="3" />
+          <Property Name="duration" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="album_cover" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="hash" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="salt" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="last_updated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserSlideshow">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="slideshow_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="slideshow_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="SlideServerDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Slides" EntityType="Self.Slide" />
+          <EntitySet Name="Slideshows" EntityType="Self.Slideshow" />
+          <EntitySet Name="SlideshowSlides" EntityType="Self.SlideshowSlide" />
+          <EntitySet Name="SlideshowSoundtracks" EntityType="Self.SlideshowSoundtrack" />
+          <EntitySet Name="Soundtracks" EntityType="Self.Soundtrack" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserSlideshows" EntityType="Self.UserSlideshow" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SlideServerDbModelStoreContainer" CdmEntityContainer="SlideServerDbEntities">
+          <EntitySetMapping Name="Slides">
+            <EntityTypeMapping TypeName="SlideServerDbModel.Slide">
+              <MappingFragment StoreEntitySet="Slide">
+                <ScalarProperty Name="slide_id" ColumnName="slide_id" />
+                <ScalarProperty Name="slide_name" ColumnName="slide_name" />
+                <ScalarProperty Name="slide_code" ColumnName="slide_code" />
+                <ScalarProperty Name="taken_date" ColumnName="taken_date" />
+                <ScalarProperty Name="caption" ColumnName="caption" />
+                <ScalarProperty Name="slide_height" ColumnName="slide_height" />
+                <ScalarProperty Name="slide_width" ColumnName="slide_width" />
+                <ScalarProperty Name="slide_margin" ColumnName="slide_margin" />
+                <ScalarProperty Name="image_uri" ColumnName="image_uri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Slideshows">
+            <EntityTypeMapping TypeName="SlideServerDbModel.Slideshow">
+              <MappingFragment StoreEntitySet="Slideshow">
+                <ScalarProperty Name="slideshow_id" ColumnName="slideshow_id" />
+                <ScalarProperty Name="slideshow_title" ColumnName="slideshow_title" />
+                <ScalarProperty Name="producer" ColumnName="producer" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="last_updated" ColumnName="last_updated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SlideshowSlides">
+            <EntityTypeMapping TypeName="SlideServerDbModel.SlideshowSlide">
+              <MappingFragment StoreEntitySet="SlideshowSlide">
+                <ScalarProperty Name="slideshow_id" ColumnName="slideshow_id" />
+                <ScalarProperty Name="slide_id" ColumnName="slide_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SlideshowSoundtracks">
+            <EntityTypeMapping TypeName="SlideServerDbModel.SlideshowSoundtrack">
+              <MappingFragment StoreEntitySet="SlideshowSoundtrack">
+                <ScalarProperty Name="slideshow_id" ColumnName="slideshow_id" />
+                <ScalarProperty Name="soundtrack_id" ColumnName="soundtrack_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Soundtracks">
+            <EntityTypeMapping TypeName="SlideServerDbModel.Soundtrack">
+              <MappingFragment StoreEntitySet="Soundtrack">
+                <ScalarProperty Name="soundtrack_id" ColumnName="soundtrack_id" />
+                <ScalarProperty Name="song" ColumnName="song" />
+                <ScalarProperty Name="musician" ColumnName="musician" />
+                <ScalarProperty Name="file_path" ColumnName="file_path" />
+                <ScalarProperty Name="file_type" ColumnName="file_type" />
+                <ScalarProperty Name="release_date" ColumnName="release_date" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="album_cover" ColumnName="album_cover" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SlideServerDbModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="hash" ColumnName="hash" />
+                <ScalarProperty Name="salt" ColumnName="salt" />
+                <ScalarProperty Name="last_updated" ColumnName="last_updated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSlideshows">
+            <EntityTypeMapping TypeName="SlideServerDbModel.UserSlideshow">
+              <MappingFragment StoreEntitySet="UserSlideshow">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="slideshow_id" ColumnName="slideshow_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
